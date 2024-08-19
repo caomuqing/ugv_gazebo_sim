@@ -290,6 +290,36 @@
             <axis xyz="0 1 0" rpy="0 0 0" />
         </joint>
 
+     <joint name="hokuyo_joint" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="hokuyo_link"/>
+      </joint>
+
+      <!-- Hokuyo Laser -->
+      <link name="hokuyo_link">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+        <box size="0.1 0.1 0.1"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://ranger_mini_v2/meshes/hokuyo.dae"/>
+          </geometry>
+        </visual>
+
+        <inertial>
+          <mass value="1e-5" />
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+      </link>
+
 	<transmission name="fl_steering_wheel_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="fl_steering_wheel">
